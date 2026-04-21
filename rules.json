@@ -1,0 +1,126 @@
+{
+  "version": "1",
+  "rules": [
+    {
+      "id": "R001",
+      "name": "destructive_delete",
+      "category": "filesystem",
+      "match_field": "command",
+      "match_type": "regex",
+      "match": "rm\\s+-[rRf]",
+      "risk_level": "HIGH",
+      "risk_tags": ["destructive", "data_loss"],
+      "enabled": true
+    },
+    {
+      "id": "R002",
+      "name": "privilege_escalation",
+      "category": "privilege",
+      "match_field": "command",
+      "match_type": "regex",
+      "match": "\\bsudo\\b",
+      "risk_level": "HIGH",
+      "risk_tags": ["privilege", "escalation"],
+      "enabled": true
+    },
+    {
+      "id": "R003",
+      "name": "ssh_key_access",
+      "category": "credential",
+      "match_field": "command",
+      "match_type": "regex",
+      "match": "\\.ssh[/\\\\]",
+      "risk_level": "HIGH",
+      "risk_tags": ["credential", "ssh_key"],
+      "enabled": true
+    },
+    {
+      "id": "R004",
+      "name": "system_config_access",
+      "category": "system",
+      "match_field": "command",
+      "match_type": "regex",
+      "match": "/etc/",
+      "risk_level": "HIGH",
+      "risk_tags": ["system_config", "sensitive_path"],
+      "enabled": true
+    },
+    {
+      "id": "R005",
+      "name": "vcs_clone",
+      "category": "network",
+      "match_field": "command",
+      "match_type": "regex",
+      "match": "git\\s+clone",
+      "risk_level": "MEDIUM",
+      "risk_tags": ["vcs", "network", "code_pull"],
+      "enabled": true
+    },
+    {
+      "id": "R006",
+      "name": "network_download_wget",
+      "category": "network",
+      "match_field": "command",
+      "match_type": "regex",
+      "match": "\\bwget\\b",
+      "risk_level": "MEDIUM",
+      "risk_tags": ["network", "download"],
+      "enabled": true
+    },
+    {
+      "id": "R007",
+      "name": "network_download_curl",
+      "category": "network",
+      "match_field": "command",
+      "match_type": "regex",
+      "match": "\\bcurl\\b",
+      "risk_level": "MEDIUM",
+      "risk_tags": ["network", "download"],
+      "enabled": true
+    },
+    {
+      "id": "R008",
+      "name": "remote_ssh",
+      "category": "network",
+      "match_field": "command",
+      "match_type": "regex",
+      "match": "\\bssh\\b",
+      "risk_level": "MEDIUM",
+      "risk_tags": ["network", "remote_access"],
+      "enabled": true
+    },
+    {
+      "id": "R009",
+      "name": "secret_keyword",
+      "category": "credential",
+      "match_field": "command",
+      "match_type": "regex",
+      "match": "(?i)(secret|password|passwd|token|apikey|api_key)",
+      "risk_level": "MEDIUM",
+      "risk_tags": ["credential", "secret_exposure"],
+      "enabled": true
+    },
+    {
+      "id": "R010",
+      "name": "permission_change",
+      "category": "system",
+      "match_field": "command",
+      "match_type": "regex",
+      "match": "\\b(chmod|chown)\\b",
+      "risk_level": "MEDIUM",
+      "risk_tags": ["permission", "system"],
+      "enabled": true
+    },
+    {
+      "id": "R011",
+      "name": "write_to_dev",
+      "category": "system",
+      "match_field": "command",
+      "match_type": "regex",
+      "match": ">\\s*/dev/",
+      "risk_level": "MEDIUM",
+      "risk_tags": ["device", "redirect"],
+      "enabled": true
+    }
+  ]
+}

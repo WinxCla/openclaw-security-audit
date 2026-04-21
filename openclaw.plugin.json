@@ -1,0 +1,11 @@
+{
+  "id": "openclaw-security-audit",
+  "name": "OpenClaw Security Audit",
+  "description": "Collects full agent behavior trace for security analysis",
+  "configSchema": {},
+  "hookRegistrationNames": {
+    "before_tool_call": "openclaw-security-audit:before_tool_call",
+    "after_tool_call": "openclaw-security-audit:after_tool_call",
+    "agent_end": "openclaw-security-audit:agent_end"
+  }
+}
